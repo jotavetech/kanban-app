@@ -1,6 +1,7 @@
 import { StyledEmptyImage } from "./styles";
 
 import Empty from "../../../assets/empty.png";
+
 import Button from "../Button";
 
 interface IEmptyImage {

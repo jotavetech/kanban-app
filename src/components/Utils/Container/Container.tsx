@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import { StyledContainer } from "./styles";
 
 function Container({ children }: { children: ReactNode }) {

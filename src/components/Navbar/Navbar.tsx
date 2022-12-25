@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 import { StyledNavbar } from "./styles";
 
 import NotesIcon from "../../assets/notes-icon.svg";
+
 import Button from "../Utils/Button";
-import { useState } from "react";
 
 function Navbar() {
   const logged = true;

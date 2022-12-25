@@ -2,15 +2,27 @@
   "boards": [
     {
       "name": "Study",
-      "id": "123456"
+      "id": "123456",
+      "tasks": {
+        "done": 3,
+        "todo": 6
+      }
     },
     {
       "name": "Work",
-      "id": "1234567"
+      "id": "1234567",
+      "tasks": {
+        "done": 3,
+        "todo": 6
+      }
     },
     {
       "name": "Project",
-      "id": "12345678"
+      "id": "12345678",
+      "tasks": {
+        "done": 3,
+        "todo": 6
+      }
     }
   ]
 }

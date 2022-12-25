@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle<IThemeProps>`
   .openSidebar {
     width: 40px;
     height: 40px;
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     display: none;

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { StyledSidebar } from "./styles";
 
 import Button from "../Utils/Button";
-
 import BoardsList from "./BoardsList";
 
 import Menu from "../../assets/menu.png";
