@@ -16,6 +16,10 @@ export const StyledSidebar = styled.aside<Props>`
   align-items: center;
   z-index: 1000;
 
+  a {
+    text-decoration: none;
+  }
+
   > div:first-child {
     padding-top: 17px;
 

@@ -39,6 +39,12 @@ export const StyledRegister = styled.div`
     }
   }
 
+  @media (max-width: 600px) {
+    > div:last-child {
+      width: 350px;
+    }
+  }
+
   @media (max-width: 400px) {
     > div:last-child {
       width: 300px;

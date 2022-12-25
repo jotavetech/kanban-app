@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { StyledSidebar } from "./styles";
 
@@ -9,11 +9,10 @@ import BoardsList from "./BoardsList";
 import Menu from "../../assets/menu.png";
 import Close from "../../assets/close.png";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Sidebar() {
-  const logged = false;
-
+  const logged = true;
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -31,7 +30,10 @@ function Sidebar() {
         className={`${isOpen ? "openedAnimation" : ""}`}
       >
         <div>
-          <h1>Kanban</h1>
+          <Link to="/">
+            <h1>Kanban</h1>
+          </Link>
+
           <button className="closeSidebar" onClick={() => setIsOpen(false)}>
             <img src={Close} />
           </button>

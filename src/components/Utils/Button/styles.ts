@@ -33,14 +33,14 @@ export const StyledButton = styled.button<Props>`
   }
 
   animation: ${(props) =>
-    props.pulsing ? "pulsingAnimation 1s infinite" : "none"};
+    props.pulsing ? "pulsingAnimation 0.8s infinite" : "none"};
 
   @keyframes pulsingAnimation {
     0% {
       transform: scale(1);
     }
     50% {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     100% {

@@ -10,6 +10,7 @@ export const StyledNavbar = styled.nav`
   height: 65px;
   background: ${(props) => props.theme.backgroundColors.menu};
   width: calc(100% - 230px);
+  z-index: 1000;
 
   h1 {
     user-select: none;
