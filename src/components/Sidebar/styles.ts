@@ -14,6 +14,7 @@ export const StyledSidebar = styled.aside<Props>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1000;
 
   > div:first-child {
     padding-top: 17px;

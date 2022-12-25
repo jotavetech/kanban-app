@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle<IThemeProps>`
     right: 20px;
     display: none;
     background: ${(props) => props.theme.backgroundColors.delete};
+    z-index: 100;
     
 
     img {

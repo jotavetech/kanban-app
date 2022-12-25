@@ -8,6 +8,7 @@ interface ButtonProps {
   height: string;
   variant?: boolean;
   pulsing?: true;
+  type?: "button" | "submit" | "reset";
 }
 
 function Button({
@@ -18,9 +19,11 @@ function Button({
   height,
   variant,
   pulsing,
+  type,
 }: ButtonProps) {
   return (
     <StyledButton
+      type={type ? type : "button"}
       onClick={onClick}
       width={width}
       height={height}

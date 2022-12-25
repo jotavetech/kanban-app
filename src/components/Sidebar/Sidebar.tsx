@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { StyledSidebar } from "./styles";
 
@@ -9,10 +9,14 @@ import BoardsList from "./BoardsList";
 import Menu from "../../assets/menu.png";
 import Close from "../../assets/close.png";
 
+import { useNavigate } from "react-router-dom";
+
 function Sidebar() {
-  const logged = true;
+  const logged = false;
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -46,14 +50,14 @@ function Sidebar() {
         ) : (
           <div className="login">
             <Button
-              onClick={() => console.log("cliquei")}
+              onClick={() => navigate("/login")}
               text="Login"
               height="50px"
               width="85%"
               variant={true}
             />
             <Button
-              onClick={() => console.log("cliquei")}
+              onClick={() => navigate("/register")}
               text="Register"
               height="50px"
               width="85%"

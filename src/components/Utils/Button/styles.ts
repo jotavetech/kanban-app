@@ -29,7 +29,7 @@ export const StyledButton = styled.button<Props>`
     background: ${(props) =>
       props.variant
         ? (props) => props.theme.utils.itemSelectedOrBorderOrButton
-        : (props) => props.theme.utils.todoListBorder};
+        : (props) => props.theme.backgroundColors.main};
   }
 
   animation: ${(props) =>
