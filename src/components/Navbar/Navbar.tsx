@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { StyledNavbar } from "./styles";
 
@@ -8,13 +8,13 @@ import Button from "../Utils/Button";
 
 function Navbar() {
   const logged = true;
-  const dashboard = false;
+  const [actualPage, setActualPage] = useState("Dashboard");
 
   return (
     <StyledNavbar>
       <div className="sectionName">
         <img src={NotesIcon} />
-        <h1>{!logged ? "Welcome" : dashboard ? "Dashboard" : "Sectioname"}</h1>
+        <h1>{actualPage}</h1>
       </div>
       <div>
         <Button

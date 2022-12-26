@@ -5,6 +5,7 @@ import Container from "./components/Utils/Container";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Board from "./pages/Board";
 import Register from "./pages/Register";
 
 function AppRoutes() {
@@ -17,6 +18,7 @@ function AppRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/board/:id" element={<Board />} />
         </Routes>
       </Container>
     </Router>

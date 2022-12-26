@@ -79,6 +79,26 @@ const GlobalStyle = createGlobalStyle<IThemeProps>`
     display: none;
   }
 
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: ${(props) => props.theme.backgroundColors.delete};
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 `;
 
 export default GlobalStyle;

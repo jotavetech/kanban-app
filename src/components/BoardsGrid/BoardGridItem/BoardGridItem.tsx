@@ -5,6 +5,8 @@ import { StyledBoardItem } from "./styles";
 import NoteIcon from "../../../assets/notes-icon.svg";
 import OptionsIcon from "../../../assets/options.png";
 
+import { useNavigate } from "react-router-dom";
+
 interface IBoardGridItem {
   id: string;
   name: string;
@@ -15,8 +17,10 @@ interface IBoardGridItem {
 }
 
 function BoardGridItem({ id, name, tasks }: IBoardGridItem) {
+  const navigate = useNavigate();
+
   return (
-    <StyledBoardItem>
+    <StyledBoardItem onClick={() => navigate(`/board/${id}`)}>
       <div className="name">
         <img src={NoteIcon} />
         <h1>{name}</h1>

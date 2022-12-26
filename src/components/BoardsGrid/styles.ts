@@ -4,7 +4,6 @@ export const StyledGrid = styled.div`
   > div {
     padding: 10px;
     width: 1100px;
-
     display: grid;
     grid: auto-flow / repeat(5, 1fr);
   }
@@ -34,6 +33,7 @@ export const StyledGrid = styled.div`
     > div {
       width: 100%;
       grid-template-columns: repeat(1, 1fr);
+      padding: 5px 20px;
 
       div {
         width: 100%;

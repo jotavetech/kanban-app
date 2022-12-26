@@ -17,7 +17,7 @@ const dark = {
   status: {
     todo: "#BF2782",
     doing: "#22AFFF",
-    complete: "#A4FFA3",
+    done: "#A4FFA3",
   },
   fontSizes: {
     lg: "3.2rem",

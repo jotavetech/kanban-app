@@ -23,6 +23,7 @@ function Home() {
         <BoardsGrid>
           {boards.map((board) => (
             <BoardGridItem
+              key={board.id}
               id={board.id}
               name={board.name}
               tasks={board.tasks}

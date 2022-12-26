@@ -8,6 +8,9 @@ export const StyledBoardItem = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.1s;
 
   .name {
     display: flex;
@@ -30,5 +33,10 @@ export const StyledBoardItem = styled.div`
 
   @media (max-width: 500px) {
     margin: 5px 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(1.3);
   }
 `;

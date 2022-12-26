@@ -29,7 +29,7 @@ function Sidebar() {
         className={`${isOpen ? "openedAnimation" : ""}`}
       >
         <div>
-          <Link to="/">
+          <Link to="/" aria-label="go to home">
             <h1>Kanban</h1>
           </Link>
 
