@@ -9,10 +9,12 @@ import Menu from "../../assets/menu.png";
 import Close from "../../assets/close.png";
 
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import NewBoard from "./NewBoard";
 
 function Sidebar() {
   const logged = true;
   const [isOpen, setIsOpen] = useState(false);
+  const [isNewBoardOpen, setIsNewBoardOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,10 +22,15 @@ function Sidebar() {
 
   useEffect(() => {
     setIsOpen(false);
+    setIsNewBoardOpen(false);
   }, [location]);
 
   return (
     <>
+      <NewBoard
+        open={isNewBoardOpen}
+        onClose={() => setIsNewBoardOpen(false)}
+      />
       <button
         className={`openSidebar ${isOpen ? "hidden" : ""}`}
         onClick={() => setIsOpen(true)}
@@ -48,7 +55,7 @@ function Sidebar() {
           <>
             <BoardsList />
             <Button
-              onClick={() => console.log("cliquei")}
+              onClick={() => setIsNewBoardOpen(true)}
               text="+ Add New Board"
               height="50px"
               width="85%"

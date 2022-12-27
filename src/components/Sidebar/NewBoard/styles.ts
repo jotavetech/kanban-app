@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTodoForm = styled.div`
+export const StyledNewBoard = styled.div`
   position: fixed;
   width: calc(100% - 230px);
   height: calc(100vh - 65px);
@@ -23,7 +23,7 @@ export const StyledTodoForm = styled.div`
     height: 20px;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 0px;
 
     img {
       max-width: 100%;
@@ -32,44 +32,18 @@ export const StyledTodoForm = styled.div`
 
   form {
     position: relative;
-    margin: 30px;
-    border-radius: 15px;
-    padding: 20px;
-    width: 400px;
+    padding: 10px;
+    width: 300px;
     background: ${(props) => props.theme.backgroundColors.item};
+    border-radius: 15px;
 
-    .status {
-      margin: 10px 0;
-      display: flex;
-      flex-direction: column;
-
-      select {
-        border: none;
-        border-radius: 15px;
-        outline: none;
-        height: 50px;
-        color: ${(props) => props.theme.textColors.primary};
-        background: ${(props) => props.theme.backgroundColors.delete};
-        font-size: 1.8rem;
-        padding: 0 20px;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-      }
-
-      select:hover {
-        opacity: 1;
-      }
+    button {
+      margin-top: 10px;
     }
   }
 
   @media (max-width: 815px) {
     width: 100%;
     left: 0;
-  }
-
-  @media (max-width: 500px) {
-    form {
-      width: 100%;
-    }
   }
 `;
