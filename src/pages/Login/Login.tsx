@@ -7,7 +7,7 @@ import { StyledLogin } from "./styles";
 
 function Login() {
   return (
-    <StyledLogin>
+    <StyledLogin className="animeBottom">
       <div className="head">
         <h1>Login</h1>
         <p>Enter your account</p>

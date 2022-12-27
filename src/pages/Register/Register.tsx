@@ -5,9 +5,9 @@ import Input from "../../components/Utils/Input";
 
 import { StyledRegister } from "./styles";
 
-function Login() {
+function Register() {
   return (
-    <StyledRegister>
+    <StyledRegister className="animeBottom">
       <div className="head">
         <h1>Register</h1>
         <p>Register your new account</p>
@@ -55,4 +55,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

@@ -5,7 +5,7 @@ import { StyledTodosList } from "./styles";
 
 function TodosList() {
   return (
-    <StyledTodosList>
+    <StyledTodosList className="animeLeft">
       <List type={"todo"} />
       <List type={"doing"} />
       <List type={"done"} />

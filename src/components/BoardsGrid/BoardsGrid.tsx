@@ -4,7 +4,7 @@ import { StyledGrid } from "./styles";
 
 function BoardsGrid({ children }: { children: ReactNode }) {
   return (
-    <StyledGrid>
+    <StyledGrid className="animeLeft">
       <div>{children}</div>
     </StyledGrid>
   );

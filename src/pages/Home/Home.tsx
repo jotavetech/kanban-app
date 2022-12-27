@@ -1,12 +1,12 @@
 import { useState } from "react";
-import BoardsGrid from "../../components/BoardsGrid";
 
+import BoardGridItem from "../../components/BoardsGrid/BoardGridItem";
 import EmptyImage from "../../components/Utils/EmptyImage";
+import BoardsGrid from "../../components/BoardsGrid";
 
 import { StyledHome } from "./styles";
 
 import BoardsMock from "../../mocks/boards.json";
-import BoardGridItem from "../../components/BoardsGrid/BoardGridItem";
 
 function Home() {
   const [boards, setBoards] = useState(BoardsMock.boards);

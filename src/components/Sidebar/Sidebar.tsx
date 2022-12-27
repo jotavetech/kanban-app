@@ -8,13 +8,19 @@ import BoardsList from "./BoardsList";
 import Menu from "../../assets/menu.png";
 import Close from "../../assets/close.png";
 
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 function Sidebar() {
   const logged = true;
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
     <>

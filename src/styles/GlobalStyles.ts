@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle<IThemeProps>`
     background: ${(props) => props.theme.backgroundColors.main};
   }
 
+  label {
+    color: ${(props) => props.theme.textColors.secondary};
+  }
+
   h1, h2, h3, h4, h5,h6, a, ul, li, span, p {
     color: ${(props) => props.theme.textColors.primary};
   }
@@ -97,6 +101,46 @@ const GlobalStyle = createGlobalStyle<IThemeProps>`
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+// enter animations
+
+.animeLeft {
+  animation: animeLeft .7s;
+}
+
+.animeLeftSlowed {
+  animation: animeLeft 1.2s;
+}
+
+.animeBottom {
+  animation: animeBottom .7s;
+}
+
+.animeBottomSlowed {
+  animation: animeBottom 1.2s;
+}
+
+@keyframes animeLeft {
+  from {
+    transform: translateX(-300px);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animeBottom {
+  from {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 `;

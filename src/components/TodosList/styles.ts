@@ -19,18 +19,23 @@ export const StyledTodosList = styled.div`
     list-style: none;
     border: 1px solid ${(props) => props.theme.utils.todoListBorder};
     border-radius: 15px;
-    cursor: pointer;
 
     li {
       background: ${(props) => props.theme.backgroundColors.item};
       margin-bottom: 10px;
-      padding: 8px;
+      padding: 10px;
       border-radius: 15px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: filter 0.2s;
 
       span {
         color: ${(props) => props.theme.textColors.secondary};
       }
+    }
+
+    li:hover {
+      filter: brightness(1.1);
     }
   }
 `;

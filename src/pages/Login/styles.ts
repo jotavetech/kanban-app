@@ -6,6 +6,7 @@ export const StyledLogin = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow-y: hidden;
 
   > div {
     text-align: center;

@@ -6,7 +6,7 @@ interface IList {
 
 function List({ type }: IList) {
   return (
-    <StyledList type={type}>
+    <StyledList type={type} className="animeLeftSlowed">
       <div className="typeTitle">
         <div className="circle"></div>
         <h2>
@@ -16,19 +16,31 @@ function List({ type }: IList) {
       <ul>
         <li>
           <p>Taskname</p>
-          <span>3/6 tasks done</span>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi
+            quis urna elementum viverra.
+          </span>
         </li>
         <li>
           <p>Taskname</p>
-          <span>3/6 tasks done</span>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi
+            quis urna elementum viverra.
+          </span>
         </li>
         <li>
           <p>Taskname</p>
-          <span>3/6 tasks done</span>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi
+            quis urna elementum viverra.
+          </span>
         </li>
         <li>
           <p>Taskname</p>
-          <span>3/6 tasks done</span>
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi
+            quis urna elementum viverra.
+          </span>
         </li>
       </ul>
     </StyledList>
