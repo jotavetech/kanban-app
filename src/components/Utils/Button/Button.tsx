@@ -1,7 +1,7 @@
 import { StyledButton } from "./styles";
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   text: string;
   icon?: any;
   width: string;

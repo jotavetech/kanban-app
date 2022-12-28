@@ -50,7 +50,7 @@ export const StyledNavbar = styled.nav`
       font-size: ${(props) => props.theme.fontSizes.sm};
     }
 
-    button {
+    button:first-child {
       width: 35px;
       height: 35px;
       margin-right: 5px;

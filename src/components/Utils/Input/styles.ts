@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledInputWrapper = styled.div`
+interface Props {
+  error?: string;
+}
+
+export const StyledInputWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -19,7 +23,7 @@ export const StyledInputWrapper = styled.div`
     width: 100%;
     color: ${(props) => props.theme.textColors.primary};
     background: ${(props) => props.theme.backgroundColors.delete};
-    border: none;
+    border: ${(props) => (props.error ? "2px solid red" : "none")};
     font-size: 1.8rem;
     padding: 0 20px;
     outline: none;

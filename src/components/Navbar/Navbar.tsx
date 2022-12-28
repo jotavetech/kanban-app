@@ -7,14 +7,27 @@ import NotesIcon from "../../assets/notes-icon.svg";
 import Button from "../Utils/Button";
 import TodoForm from "../TodoForm";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import { auth } from "../../config/Firebase";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import { signOut } from "firebase/auth";
 
 function Navbar() {
-  const logged = true;
   const [actualPage, setActualPage] = useState("");
   const [openNewTask, setOpenNewTask] = useState(false);
 
+  const [user] = useAuthState(auth);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (pathname.slice(0, 6) === "/board") setActualPage("Your tasks");
@@ -22,6 +35,11 @@ function Navbar() {
     if (pathname.slice(0, 9) === "/register") setActualPage("Register");
     if (pathname === "/") setActualPage("Boards");
   }, [pathname]);
+
+  const userLogout = async () => {
+    await signOut(auth);
+    navigate("/login");
+  };
 
   return (
     <>
@@ -40,7 +58,15 @@ function Navbar() {
               width="40px"
             />
           )}
-          <p>{logged ? "Hello, João" : "Welcome!"}</p>
+          <p>{user ? "Hello, João" : "Welcome!"}</p>
+          {user && (
+            <Button
+              text="Leave >"
+              width="80px"
+              height="30px"
+              onClick={userLogout}
+            />
+          )}
         </div>
       </StyledNavbar>
     </>

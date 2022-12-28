@@ -121,6 +121,12 @@ const GlobalStyle = createGlobalStyle<IThemeProps>`
   animation: animeBottom 1.2s;
 }
 
+.errorMsg {
+    margin-top: 5px;
+    color: red;
+    font-size: ${(props) => props.theme.fontSizes.sm};
+  }
+
 @keyframes animeLeft {
   from {
     transform: translateX(-300px);

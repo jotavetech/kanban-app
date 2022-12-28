@@ -7,11 +7,20 @@ interface IInput {
   value?: string;
   id: string;
   label: string;
+  error?: string;
 }
 
-function Input({ type, placeholder, onChange, value, id, label }: IInput) {
+function Input({
+  type,
+  placeholder,
+  onChange,
+  value,
+  id,
+  label,
+  error,
+}: IInput) {
   return (
-    <StyledInputWrapper>
+    <StyledInputWrapper error={error}>
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
@@ -20,6 +29,7 @@ function Input({ type, placeholder, onChange, value, id, label }: IInput) {
         onChange={onChange}
         value={value}
       />
+      {error && <p className="errorMsg">{error}</p>}
     </StyledInputWrapper>
   );
 }

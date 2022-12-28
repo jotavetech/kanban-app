@@ -4,15 +4,15 @@ import { StyledSidebar } from "./styles";
 
 import Button from "../Utils/Button";
 import BoardsList from "./BoardsList";
+import NewBoard from "./NewBoard";
 
 import Menu from "../../assets/menu.png";
 import Close from "../../assets/close.png";
 
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import NewBoard from "./NewBoard";
 
 function Sidebar() {
-  const logged = true;
+  const logged = false;
   const [isOpen, setIsOpen] = useState(false);
   const [isNewBoardOpen, setIsNewBoardOpen] = useState(false);
 
