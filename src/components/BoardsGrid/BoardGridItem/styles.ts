@@ -11,6 +11,7 @@ export const StyledBoardItem = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: 0.1s;
+  position: relative;
 
   .name {
     h1 {
@@ -41,5 +42,26 @@ export const StyledBoardItem = styled.div`
   &:hover {
     transform: scale(1.05);
     filter: brightness(1.3);
+  }
+
+  .deleteBoard {
+    background: ${(props) => props.theme.backgroundColors.menu};
+    padding: 10px;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    width: 130px;
+    cursor: default;
+
+    button {
+      background: transparent;
+      font-size: ${(props) => props.theme.fontSizes.md};
+      font-family: "Poppins", sans-serif;
+      color: ${(props) => props.theme.textColors.primary};
+      border: none;
+      margin-right: 30px;
+      cursor: pointer;
+    }
   }
 `;

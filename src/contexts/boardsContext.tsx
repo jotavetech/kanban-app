@@ -1,6 +1,14 @@
 import { createContext, ReactNode, useState } from "react";
 
-import { addDoc, getDocs, collection } from "firebase/firestore";
+import {
+  addDoc,
+  getDocs,
+  collection,
+  query,
+  where,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../config/Firebase";
 
@@ -9,6 +17,7 @@ import { IBoard, ITask } from "../types/boardsAndTasks";
 interface IBoardsContext {
   boards: IBoard[] | null;
   createNewBoard: (name: string) => void;
+  deleteABoard: (boardId: string) => void;
   getBoards: () => void;
 }
 
@@ -19,12 +28,12 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
 
   const [user] = useAuthState(auth);
 
-  const boardsRef = collection(db, "boards");
+  const boardsCollection = collection(db, "boards");
 
   const createNewBoard = async (name: string) => {
     if (user) {
       try {
-        await addDoc(boardsRef, {
+        await addDoc(boardsCollection, {
           ownerId: user.uid,
           name,
         });
@@ -35,22 +44,38 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const deleteABoard = async (boardId: string) => {
+    if (user) {
+      try {
+        const boardRef = doc(db, "boards", boardId);
+        await deleteDoc(boardRef);
+        getBoards();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   const getBoards = async () => {
     if (user) {
-      const boardsDocs = await getDocs(boardsRef);
+      const boardsQuery = query(
+        boardsCollection,
+        where("ownerId", "==", user.uid)
+      );
+      const boardsDocs = await getDocs(boardsQuery);
       setBoards(
         boardsDocs.docs.map((board) => ({
           ...board.data(),
           id: board.id,
         })) as IBoard[]
       );
-
-      console.log(boards);
     }
   };
 
   return (
-    <BoardsContext.Provider value={{ boards, getBoards, createNewBoard }}>
+    <BoardsContext.Provider
+      value={{ boards, getBoards, createNewBoard, deleteABoard }}
+    >
       {children}
     </BoardsContext.Provider>
   );

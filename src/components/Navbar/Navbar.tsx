@@ -27,10 +27,10 @@ function Navbar() {
   }, [user]);
 
   const getUsername = () => {
-    if (user && user.email) {
+    if (user && !user.displayName && user.email) {
       let emailProviderIndex = user.email.indexOf("@");
       setUsername(user.email.slice(0, emailProviderIndex));
-    }
+    } else if (user && user.displayName) setUsername(user.displayName);
   };
 
   const { pathname } = useLocation();

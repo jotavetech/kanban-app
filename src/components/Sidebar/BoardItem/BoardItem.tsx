@@ -23,7 +23,6 @@ function BoardItem({ props }: ItemProps) {
         <img src={NotesIcon} />
         <p>{name}</p>
       </div>
-      <img src={OptionsIcon} />
     </StyledBoardItem>
   );
 }

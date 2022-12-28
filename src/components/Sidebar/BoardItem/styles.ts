@@ -19,6 +19,11 @@ export const StyledBoardItem = styled.li<Props>`
   cursor: pointer;
   transition: 0.2s;
 
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   img {
     width: 19px;
     filter: grayscale(1) invert(1);

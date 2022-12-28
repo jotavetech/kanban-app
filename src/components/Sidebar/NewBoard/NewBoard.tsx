@@ -25,6 +25,7 @@ function NewBoard({ open, onClose }: INewBoard) {
 
     if (!name) return setError("You have to set a name");
     setError("");
+    setName("");
     createNewBoard(name);
     onClose();
   };
