@@ -84,6 +84,8 @@ function Register() {
       .catch((err) => console.log(err));
   };
 
+  if (loading) return null;
+
   return (
     <StyledRegister className="animeBottom">
       <div className="head">

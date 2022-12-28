@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Utils/Button";
 import Input from "../../components/Utils/Input";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/Firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../config/Firebase";
 
 import { StyledLogin } from "./styles";
 
@@ -79,6 +79,12 @@ function Login() {
     }
   };
 
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((userRes) => console.log(userRes))
+      .catch((err) => console.log(err));
+  };
+
   if (loading) return null;
 
   return (
@@ -116,7 +122,7 @@ function Login() {
             type="submit"
           />
           <Button
-            onClick={() => console.log("oi")}
+            onClick={signInWithGoogle}
             height="50px"
             width="100%"
             text="Login With Google"
