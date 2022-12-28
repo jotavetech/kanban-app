@@ -18,12 +18,20 @@ import { signOut } from "firebase/auth";
 function Navbar() {
   const [actualPage, setActualPage] = useState("");
   const [openNewTask, setOpenNewTask] = useState(false);
+  const [username, setUsername] = useState("user");
 
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    console.log(user);
+    getUsername();
   }, [user]);
+
+  const getUsername = () => {
+    if (user && user.email) {
+      let emailProviderIndex = user.email.indexOf("@");
+      setUsername(user.email.slice(0, emailProviderIndex));
+    }
+  };
 
   const { pathname } = useLocation();
 
@@ -58,7 +66,7 @@ function Navbar() {
               width="40px"
             />
           )}
-          <p>{user ? "Hello, João" : "Welcome!"}</p>
+          <p>{user ? `Hello, ${username}` : "Welcome!"}</p>
           {user && (
             <Button
               text="Leave >"

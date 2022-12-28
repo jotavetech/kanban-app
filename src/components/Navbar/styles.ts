@@ -34,7 +34,7 @@ export const StyledNavbar = styled.nav`
     padding: 0 10px;
 
     div {
-      gap: 5px;
+      gap: 10px;
     }
 
     h1 {

@@ -11,10 +11,14 @@ import Close from "../../assets/close.png";
 
 import { useNavigate, Link, useLocation } from "react-router-dom";
 
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../config/Firebase";
+
 function Sidebar() {
-  const logged = false;
   const [isOpen, setIsOpen] = useState(false);
   const [isNewBoardOpen, setIsNewBoardOpen] = useState(false);
+
+  const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -51,7 +55,7 @@ function Sidebar() {
           </button>
         </div>
 
-        {logged ? (
+        {user ? (
           <>
             <BoardsList />
             <Button
