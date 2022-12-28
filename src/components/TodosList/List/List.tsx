@@ -1,39 +1,17 @@
 import { useState } from "react";
+
+import { ITask } from "../../../types/boardsAndTasks";
+
 import ChangeStatus from "../ChangeStatus";
+
 import { StyledList } from "./styles";
 
 interface IList {
   type: "todo" | "doing" | "done";
+  tasks: ITask[];
 }
 
-const tasks = [
-  {
-    name: "Taskname",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi quis urna elementum viverra.",
-    id: 1,
-  },
-  {
-    name: "Taskname",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi quis urna elementum viverra.",
-    id: 2,
-  },
-  {
-    name: "Taskname",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi quis urna elementum viverra.",
-    id: 3,
-  },
-  {
-    name: "Taskname",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi quis urna elementum viverra.",
-    id: 4,
-  },
-];
-
-function List({ type }: IList) {
+function List({ type, tasks }: IList) {
   const [isStatusMenuOpen, setIsStatusMenuOpen] = useState(false);
 
   return (

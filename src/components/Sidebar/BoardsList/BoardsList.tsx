@@ -7,9 +7,11 @@ import { StyledBoardsList } from "./styles";
 import { BoardsContext } from "../../../contexts/boardsContext";
 
 function BoardsList() {
-  const { boards } = useContext(BoardsContext);
+  const { boards, getBoards } = useContext(BoardsContext);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getBoards();
+  }, []);
 
   return (
     <StyledBoardsList>

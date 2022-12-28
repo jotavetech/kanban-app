@@ -16,15 +16,19 @@ import { IBoard, ITask } from "../types/boardsAndTasks";
 
 interface IBoardsContext {
   boards: IBoard[] | null;
+  tasks: ITask[] | null;
   createNewBoard: (name: string) => void;
   deleteABoard: (boardId: string) => void;
   getBoards: () => void;
+  createNewTask: ({ boardId, name, description }: ITask) => void;
+  getTasks: (boardId: string) => void;
 }
 
 export const BoardsContext = createContext({} as IBoardsContext);
 
 export const BoardsProvider = ({ children }: { children: ReactNode }) => {
   const [boards, setBoards] = useState<IBoard[] | null>([]);
+  const [tasks, setTasks] = useState<ITask[] | null>([]);
 
   const [user] = useAuthState(auth);
 
@@ -72,9 +76,57 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const tasksCollection = collection(db, "tasks");
+
+  const createNewTask = async ({
+    boardId,
+    name,
+    description,
+    status,
+  }: ITask) => {
+    if (user) {
+      try {
+        await addDoc(tasksCollection, {
+          boardId,
+          name,
+          description,
+          status,
+        });
+        getBoards();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  const getTasks = async (boardId: string) => {
+    if (user) {
+      const tasksQuery = query(
+        tasksCollection,
+        where("boardId", "==", boardId)
+      );
+
+      const tasksDocs = await getDocs(tasksQuery);
+      setTasks(
+        tasksDocs.docs.map((task) => ({
+          ...task.data(),
+          id: task.id,
+        })) as ITask[]
+      );
+    }
+  };
+
   return (
     <BoardsContext.Provider
-      value={{ boards, getBoards, createNewBoard, deleteABoard }}
+      value={{
+        boards,
+        getBoards,
+        createNewBoard,
+        deleteABoard,
+        createNewTask,
+        getTasks,
+        tasks,
+      }}
     >
       {children}
     </BoardsContext.Provider>

@@ -1,25 +1,35 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
 import TodosList from "../../components/TodosList";
 import EmptyImage from "../../components/Utils/EmptyImage";
 
+import { BoardsContext } from "../../contexts/boardsContext";
+import { ITask } from "../../types/boardsAndTasks";
+
 import { StyledBoardPage } from "./styles";
 
 function Board() {
   const { id } = useParams();
-  const [todos, setTodos] = useState([1]);
+
+  const { tasks, getTasks } = useContext(BoardsContext);
+
+  useEffect(() => {
+    if (id) {
+      getTasks(id);
+    }
+  }, [id]);
 
   return (
     <StyledBoardPage>
-      {todos.length < 1 ? (
+      {!tasks || tasks.length < 1 ? (
         <EmptyImage
           emptyText1="Your board is empty :("
           emptyText2="Add a new task"
         />
       ) : (
-        <TodosList />
+        <TodosList tasks={tasks} />
       )}
     </StyledBoardPage>
   );
