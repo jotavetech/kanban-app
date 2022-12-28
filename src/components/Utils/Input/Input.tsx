@@ -8,6 +8,7 @@ interface IInput {
   id: string;
   label: string;
   error?: string;
+  maxLength?: number;
 }
 
 function Input({
@@ -18,6 +19,7 @@ function Input({
   id,
   label,
   error,
+  maxLength,
 }: IInput) {
   return (
     <StyledInputWrapper error={error}>
@@ -28,6 +30,7 @@ function Input({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        maxLength={maxLength}
       />
       {error && <p className="errorMsg">{error}</p>}
     </StyledInputWrapper>

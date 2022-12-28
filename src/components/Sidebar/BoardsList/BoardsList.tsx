@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import BoardItem from "../BoardItem";
 
 import { StyledBoardsList } from "./styles";
 
-import boardsMock from "../../../mocks/boards.json";
+import { BoardsContext } from "../../../contexts/boardsContext";
 
 function BoardsList() {
-  const [boards, setBoards] = useState(boardsMock.boards);
+  const { boards } = useContext(BoardsContext);
 
-  useEffect(() => {
-    // setBoards([]);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <StyledBoardsList>
       <h2>Your boards</h2>
-      {boards.length > 0 ? (
+      {boards && boards.length > 0 ? (
         <div className="scrollBoards">
           {boards.map((board) => (
             <BoardItem key={board.id} props={board} />

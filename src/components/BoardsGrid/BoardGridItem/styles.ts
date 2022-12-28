@@ -4,7 +4,7 @@ export const StyledBoardItem = styled.div`
   background: ${(props) => props.theme.backgroundColors.item};
   border-radius: 15px;
   padding: 10px;
-  width: 200px;
+  width: 330px;
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -13,6 +13,9 @@ export const StyledBoardItem = styled.div`
   transition: 0.1s;
 
   .name {
+    h1 {
+      font-size: 3rem;
+    }
     display: flex;
     gap: 10px;
   }

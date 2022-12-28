@@ -3,12 +3,15 @@ import GlobalStyle from "./styles/GlobalStyles";
 import { dark } from "./styles/theme";
 
 import AppRoutes from "./Routes";
+import { BoardsProvider } from "./contexts/boardsContext";
 
 function App() {
   return (
     <ThemeProvider theme={dark}>
-      <AppRoutes />
-      <GlobalStyle />
+      <BoardsProvider>
+        <AppRoutes />
+        <GlobalStyle />
+      </BoardsProvider>
     </ThemeProvider>
   );
 }
