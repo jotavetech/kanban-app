@@ -9,17 +9,14 @@ import { StyledList } from "./styles";
 interface IList {
   type: "todo" | "doing" | "done";
   tasks: ITask[];
+  boardId: string;
 }
 
-function List({ type, tasks }: IList) {
+function List({ type, tasks, boardId }: IList) {
   const [isStatusMenuOpen, setIsStatusMenuOpen] = useState(false);
 
   return (
     <>
-      <ChangeStatus
-        open={isStatusMenuOpen}
-        onClose={() => setIsStatusMenuOpen(false)}
-      />
       <StyledList type={type} className="animeLeftSlowed">
         <div className="typeTitle">
           <div className="circle"></div>
@@ -29,10 +26,19 @@ function List({ type, tasks }: IList) {
         </div>
         <ul>
           {tasks.map((task) => (
-            <li key={task.id} onClick={() => setIsStatusMenuOpen(true)}>
-              <p>{task.name}</p>
-              <span>{task.description}</span>
-            </li>
+            <div key={task.id}>
+              <li onClick={() => setIsStatusMenuOpen(true)}>
+                <p>{task.name}</p>
+                <span>{task.description}</span>
+              </li>
+              <ChangeStatus
+                id={task.id}
+                actualStatusValue={task.status}
+                open={isStatusMenuOpen}
+                onClose={() => setIsStatusMenuOpen(false)}
+                boardId={boardId}
+              />
+            </div>
           ))}
         </ul>
       </StyledList>

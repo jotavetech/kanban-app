@@ -8,6 +8,7 @@ export const StyledList = styled.div<Props>`
   flex-grow: 1;
   height: 700px;
   max-height: 700px;
+  max-width: 500px;
 
   @media (max-width: 1040px) {
     width: 100%;

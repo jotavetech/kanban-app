@@ -6,7 +6,7 @@ import { ITask } from "../../types/boardsAndTasks";
 
 import { StyledTodosList } from "./styles";
 
-function TodosList({ tasks }: { tasks: ITask[] }) {
+function TodosList({ tasks, boardId }: { tasks: ITask[]; boardId: string }) {
   const [todos, setTodos] = useState<ITask[]>([]);
   const [doing, setDoing] = useState<ITask[]>([]);
   const [done, setDone] = useState<ITask[]>([]);
@@ -29,9 +29,13 @@ function TodosList({ tasks }: { tasks: ITask[] }) {
 
   return (
     <StyledTodosList className="animeLeft">
-      <List type={"todo"} tasks={todos} />
-      <List type={"doing"} tasks={doing} />
-      <List type={"done"} tasks={done} />
+      {todos.length > 0 && (
+        <List type={"todo"} tasks={todos} boardId={boardId} />
+      )}
+      {doing.length > 0 && (
+        <List type={"doing"} tasks={doing} boardId={boardId} />
+      )}
+      {done.length > 0 && <List type={"done"} tasks={done} boardId={boardId} />}
     </StyledTodosList>
   );
 }

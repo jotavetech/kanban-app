@@ -8,6 +8,7 @@ import {
   where,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../config/Firebase";
@@ -22,7 +23,14 @@ interface IBoardsContext {
   getBoards: () => void;
   createNewTask: ({ boardId, name, description }: ITask) => void;
   getTasks: (boardId: string) => void;
+  updateTask: (
+    taskId: string | undefined,
+    taskStatus: TaskStatus,
+    boardId: string
+  ) => void;
 }
+
+type TaskStatus = "todo" | "doing" | "done";
 
 export const BoardsContext = createContext({} as IBoardsContext);
 
@@ -116,9 +124,29 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const updateTask = async (
+    taskId: string | undefined,
+    taskStatus: TaskStatus,
+    boardId: string
+  ) => {
+    if (user && taskId) {
+      try {
+        const taskRef = doc(db, "tasks", taskId);
+        await updateDoc(taskRef, {
+          status: taskStatus,
+        });
+
+        getTasks(boardId);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <BoardsContext.Provider
       value={{
+        updateTask,
         boards,
         getBoards,
         createNewBoard,
