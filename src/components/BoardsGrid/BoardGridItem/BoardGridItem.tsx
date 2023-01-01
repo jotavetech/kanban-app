@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { StyledBoardItem } from "./styles";
 
@@ -10,19 +10,22 @@ import { useNavigate } from "react-router-dom";
 import { BoardsContext } from "../../../contexts/boardsContext";
 
 import ConfirmMenu from "../../Utils/ConfirmMenu";
+import { ITask } from "../../../types/boardsAndTasks";
 
 interface IBoardGridItem {
   id: string;
   name: string;
   tasks: {
-    todo: number;
-    done: number;
+    todos: ITask[] | undefined;
+    done: ITask[] | undefined;
   };
 }
 
-function BoardGridItem({ id, name, tasks }: IBoardGridItem) {
+function BoardGridItem({ id, name, tasks: { todos, done } }: IBoardGridItem) {
   const [deleteMenuOpen, setDeleteMenuOpen] = useState(false);
   const [confirmMenu, setConfirmMenu] = useState(false);
+  const [tasksNumber, setTasksNumber] = useState(0);
+  const [doneNumber, setDoneNumber] = useState(0);
 
   const navigate = useNavigate();
 
@@ -32,6 +35,18 @@ function BoardGridItem({ id, name, tasks }: IBoardGridItem) {
     deleteABoard(id);
     setConfirmMenu(false);
   };
+
+  useEffect(() => {
+    if (todos) {
+      setTasksNumber(0);
+      todos.forEach(() => setTasksNumber((prev) => prev + 1));
+    }
+
+    if (done) {
+      setDoneNumber(0);
+      done.forEach(() => setDoneNumber((prev) => prev + 1));
+    }
+  }, [todos, done]);
 
   return (
     <>
@@ -47,7 +62,7 @@ function BoardGridItem({ id, name, tasks }: IBoardGridItem) {
           <h1>{name}</h1>
         </div>
         <p>
-          {tasks.todo}/{tasks.done} tasks done
+          {doneNumber}/{tasksNumber} tasks done
         </p>
         {deleteMenuOpen && (
           <div className="deleteBoard animeLeft">

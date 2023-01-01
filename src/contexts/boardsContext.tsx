@@ -48,6 +48,7 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
         await addDoc(boardsCollection, {
           ownerId: user.uid,
           name,
+          createdAt: new Date(),
         });
         getBoards();
       } catch (err) {
@@ -75,10 +76,26 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
         where("ownerId", "==", user.uid)
       );
       const boardsDocs = await getDocs(boardsQuery);
+
+      const boardTasks = query(
+        tasksCollection,
+        where("ownerId", "==", user.uid)
+      );
+
+      const tasksDoc = await getDocs(boardTasks);
+      const tasks = tasksDoc.docs.map((task) => task.data()) as ITask[];
+
       setBoards(
         boardsDocs.docs.map((board) => ({
           ...board.data(),
           id: board.id,
+          createdAt: new Date(),
+          todos: tasks.filter((task) => {
+            return task.boardId === board.id;
+          }),
+          done: tasks.filter((task) => {
+            return task.boardId === board.id && task.status === "done";
+          }),
         })) as IBoard[]
       );
     }
@@ -99,6 +116,8 @@ export const BoardsProvider = ({ children }: { children: ReactNode }) => {
           name,
           description,
           status,
+          ownerId: user.uid,
+          createdAt: new Date(),
         });
         getBoards();
       } catch (err) {

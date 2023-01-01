@@ -47,7 +47,7 @@ function Home() {
               key={board.id}
               id={board.id}
               name={board.name}
-              tasks={{ todo: 0, done: 0 }}
+              tasks={{ todos: board.todos, done: board.done }}
             />
           ))}
         </BoardsGrid>
