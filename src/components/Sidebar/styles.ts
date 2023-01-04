@@ -87,4 +87,9 @@ export const StyledSidebar = styled.aside<Props>`
       display: block;
     }
   }
+
+  .github {
+    position: absolute;
+    bottom: 15px;
+  }
 `;

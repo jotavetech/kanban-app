@@ -83,6 +83,14 @@ function Sidebar() {
             />
           </div>
         )}
+        <a
+          href="https://github.com/jaoincode"
+          target="_blank"
+          className="github"
+          aria-label="visit jaoincode github"
+        >
+          @jaoincode
+        </a>
       </StyledSidebar>
     </>
   );
